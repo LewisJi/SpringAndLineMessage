@@ -9,6 +9,6 @@ import com.linetask.document.LineMessage;
 
 @Repository
 public interface LineUserMessageRepository extends MongoRepository<LineMessage,String>{
-
+	//TODO
 	List<LineMessage> findAll();
 }
