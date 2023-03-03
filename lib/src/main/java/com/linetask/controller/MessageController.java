@@ -20,9 +20,9 @@ import com.linetask.services.LineMessageService;
 
 /**
  * 
- * @author LewisJi
- * Sample Line Messages API
- * description: String boot + linecorp.bot + mongodb , it could send messages to Line and use mongodb
+ * @author LewisJi Sample Line Messages API description: String boot +
+ *         linecorp.bot + mongodb , it could send messages to Line and use
+ *         mongodb
  */
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @LineMessageHandler
@@ -49,7 +49,7 @@ public class MessageController {
 
 	@PostMapping(value = "/add", produces = "application/json;charset=UTF-8")
 	public boolean addOne(LineMessageRequest rq) {
-	
+
 		return lmService.save(new LineMessage(rq.getName(), rq.getMessage(), rq.getType()));
 	}
 
@@ -59,8 +59,7 @@ public class MessageController {
 		lmService.pushMessages(message);
 	}
 
-	// query message list of the user, #6 Create an API query message list of the
-	// user from MongoDB
+	// send message list of user,#6 API query message list of the user from MongoDB
 	@PostMapping(value = "/list", produces = "application/json;charset=UTF-8")
 	public void userList(CallbackRequest callbackRequest) {
 		lmService.pushMessages(lmService.getMessageListOfUser());
@@ -73,7 +72,7 @@ public class MessageController {
 		String replyToken = event.getReplyToken();
 		String text = event.getMessage().getText();
 		lmService.replyMessage(replyToken, text);
-		
+
 	}
 
 }
