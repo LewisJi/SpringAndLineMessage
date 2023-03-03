@@ -27,7 +27,7 @@ import com.linetask.services.LineMessageService;
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @LineMessageHandler
 @RestController
-public class MessageController {
+public class LineMessageController {
 
 	@Autowired
 	LineMessageService lmService;
