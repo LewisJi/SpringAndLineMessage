@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,10 +54,9 @@ public class MessageController {
 	}
 
 	// push a message to line ,#5 Create an API send message back to line
-	@PostMapping(value = "/push", produces = "application/json;charset=UTF-8")
-	public void pushMessage(LineMessageRequest rq) {
-		// TODO hard code message 123 and user
-		lmService.pushMessages("123");
+	@GetMapping(value = "/push/{message}", produces = "application/json;charset=UTF-8")
+	public void pushMessage(@PathVariable String message) {
+		lmService.pushMessages(message);
 	}
 
 	// query message list of the user, #6 Create an API query message list of the
